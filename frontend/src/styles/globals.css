@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Desabilitar seleção de texto em textos literários */
+  .no-select {
+    @apply select-none;
+  }
+
+  /* Watermark nos textos */
+  .text-watermark {
+    @apply relative;
+  }
+
+  .text-watermark::before {
+    content: attr(data-watermark);
+    @apply absolute inset-0 flex items-center justify-center text-center opacity-10 pointer-events-none;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ccc;
+    transform: rotate(-45deg);
+    z-index: 0;
+  }
+
+  /* Proteção contra copy */
+  .protected-text {
+    @apply select-none;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -webkit-touch-callout: none !important;
+  }
+
+  /* Botão primário */
+  .btn-primary {
+    @apply px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors;
+  }
+
+  /* Botão secundário */
+  .btn-secondary {
+    @apply px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow;
+  }
+
+  /* Input */
+  .input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+}
+
+body {
+  @apply bg-gray-50 text-gray-900;
+}
+
+/* Desabilitar seleção em elementos protegidos */
+.protected-text {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+/* Esconder menu de contexto */
+.no-context-menu {
+  -webkit-touch-callout: none !important;
+}
